@@ -5,4 +5,6 @@
 
   - Servicios enlazados
   - Servicios del sistema
+  - Autoboot en proyecto de Mis notitas
+  - Proveedor de contenidos y cliente del proveedor de contenidos
  
