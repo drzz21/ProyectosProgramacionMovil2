@@ -10,28 +10,39 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
     SensorManager sensorManager;
     Sensor sensor;
     SensorEventListener sensorEventListener;
     int a=0;
+    ImageView baloncito=null;
 
-
+    int width=0;
+    int height=0;
+    int equipo1=0,equipo2=0;
+    TextView m1,m2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final ImageView baloncito =  (ImageView)findViewById(R.id.baloncito);
-        final ImageView porteria =  (ImageView)findViewById(R.id.porteria);
+        baloncito =  (ImageView)findViewById(R.id.baloncito);
+        m1 =  (TextView) findViewById(R.id.MarcadorA);
+        m2 =  (TextView) findViewById(R.id.MarcadorB);
+
         final ImageView cancha =  (ImageView)findViewById(R.id.canchita);
 
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        final int width=metrics.widthPixels;
-        final int height = metrics.heightPixels;
+        width=metrics.widthPixels;
+        height = metrics.heightPixels;
+
+
 
         sensorManager=(SensorManager)getSystemService(SENSOR_SERVICE);
         sensor=sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -43,9 +54,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSensorChanged(SensorEvent sensorEvent) {
 
-                if (porteria.getX() == baloncito.getX()){
-                    Toast.makeText(MainActivity.this, "gol", Toast.LENGTH_SHORT).show();
-                }
+
 
                 float x = sensorEvent.values[0];
                 float y = sensorEvent.values[1];
@@ -53,28 +62,50 @@ public class MainActivity extends AppCompatActivity {
                 if (x<-1){
                         if(baloncito.getX()<width-baloncito.getWidth()) {
                             baloncito.setX(baloncito.getX() + 30);
+
                         }
+
+
 
                 }else if(x>1){
                         if(baloncito.getX()>1) {
                             baloncito.setX(baloncito.getX() - 30);
                         }
 
+
+
                 }
 
                 // eje y
 
-                Log.d("x",x+"");
-                Log.d("y",y+"");
+//                Log.d("x",x+"");
+//                Log.d("y",y+"");
 
                 if(y<-1){
                     if(baloncito.getY()>0) {
                         baloncito.setY(baloncito.getY() - 50);
+                    }else {
+                        if(baloncito.getX()>400&&baloncito.getX()<580) {
+                            golecito();
+                            equipo1++;
+                            m1.setText(equipo1+"");
+
+                        }
                     }
+
                 }else if (y>1){
                     if(baloncito.getY()<(width-baloncito.getHeight()+400)) {
                         baloncito.setY(baloncito.getY() + 50);
+
+                    }else {
+                        if(baloncito.getX()>400&&baloncito.getX()<580) {
+                            golecito();
+                            equipo2++;
+                            m2.setText(equipo2+"");
+                        }
                     }
+
+
                 }
 
             }
@@ -87,6 +118,11 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         start();
+    }
+
+    public void golecito(){
+        baloncito.setY(645);
+        baloncito.setX(410);
     }
 
     private  void start(){
@@ -112,5 +148,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         start();
         super.onResume();
+        golecito();
     }
 }
