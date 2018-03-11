@@ -7,6 +7,8 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -17,12 +19,19 @@ public class MainActivity extends AppCompatActivity {
     int a=0;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final ImageView baloncito =  (ImageView)findViewById(R.id.baloncito);
         final ImageView porteria =  (ImageView)findViewById(R.id.porteria);
+        final ImageView cancha =  (ImageView)findViewById(R.id.canchita);
+
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        final int width=metrics.widthPixels;
+        final int height = metrics.heightPixels;
 
         sensorManager=(SensorManager)getSystemService(SENSOR_SERVICE);
         sensor=sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -42,29 +51,30 @@ public class MainActivity extends AppCompatActivity {
                 float y = sensorEvent.values[1];
 
                 if (x<-1){
-                    do {
-                        baloncito.setX(baloncito.getX() + 30);
-                    }while (baloncito.getX()<100);
-
+                        if(baloncito.getX()<width-baloncito.getWidth()) {
+                            baloncito.setX(baloncito.getX() + 30);
+                        }
 
                 }else if(x>1){
-                    do {
-                        baloncito.setX(baloncito.getX() - 30);
-                    }while (baloncito.getX()>150);
+                        if(baloncito.getX()>1) {
+                            baloncito.setX(baloncito.getX() - 30);
+                        }
 
                 }
 
                 // eje y
 
-                if(y<-1){
-                    do{
-                    baloncito.setY(baloncito.getY()-50);
-                }while (baloncito.getY()>100);
+                Log.d("x",x+"");
+                Log.d("y",y+"");
 
+                if(y<-1){
+                    if(baloncito.getY()>0) {
+                        baloncito.setY(baloncito.getY() - 50);
+                    }
                 }else if (y>1){
-                    do {
+                    if(baloncito.getY()<(width-baloncito.getHeight()+400)) {
                         baloncito.setY(baloncito.getY() + 50);
-                     }while (baloncito.getY()<150);
+                    }
                 }
 
             }
@@ -80,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private  void start(){
-        sensorManager.registerListener(sensorEventListener,sensor,sensorManager.SENSOR_DELAY_NORMAL);
+        sensorManager.registerListener(sensorEventListener,sensor,sensorManager.SENSOR_DELAY_GAME);
     }
 
     private  void stop(){
