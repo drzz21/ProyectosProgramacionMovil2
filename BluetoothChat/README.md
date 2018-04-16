@@ -1,25 +1,25 @@
 
-Android BluetoothChat Sample
+Bluetooth Chat Android
 ===================================
 
-This sample shows how to implement two-way text chat over Bluetooth between two Android devices, using
-all the fundamental Bluetooth API capabilities.
+Este ejemplo muestra como implementar un chat sobre Bluetooth entre dos dispositivos android
+
 
 Introduction
 ------------
 
-This sample should be run on two Android devices at the same time, to establish a two-way chat over
-Bluetooth between the devices. Select "Made discoverable" in overflow menu on one device and click
-on the Bluetooth icon on the other one, to find the device and establish the connection.
+Este ejemplo debería ejecutarse en dos dispositivos Android al mismo tiempo, para establecer una conversación bidireccional sobre
+Bluetooth entre los dispositivos. Seleccione "Hecho descubrible" en el menú de desbordamiento de un dispositivo y haga clic en
+en el icono de Bluetooth en el otro, para encontrar el dispositivo y establecer la conexión.
 
-The sample demonstrates the following, using the [Bluetooth API][1]:
+El ejempo demuestra lo siguiente usando la API Bluetooth
 
-1. [Setting up][2] Bluetooth
-2. [Scanning][3] for other Bluetooth devices
-3. [Querying][4] the local Bluetooth adapter for paired Bluetooth devices
-4. [Establishing RFCOMM][5] channels/sockets
-5. [Connecting][6] to a remote device
-6. [Transfering][7] data over Bluetooth
+1. [Configurar][2] Bluetooth
+2. [Escanear][3] en busca de dispositivos Bluetooth
+3. [Consulta][4] del adaptador Bluetooth local para ver dispositivos Bluetooth emparejados
+4. [Establecer RFCOMM][5] Mediante canales/sockets
+5. [Conectar][6] a un dispositivo remoto
+6. [Transferencia][7] de datos sobre Bluetooth
 
 [1]: http://developer.android.com/guide/topics/connectivity/bluetooth.html
 [2]: http://developer.android.com/guide/topics/connectivity/bluetooth.html#Permissions
@@ -29,37 +29,16 @@ The sample demonstrates the following, using the [Bluetooth API][1]:
 [6]: http://developer.android.com/guide/topics/connectivity/bluetooth.html#ConnectingAsAClient
 [7]: http://developer.android.com/guide/topics/connectivity/bluetooth.html#ManagingAConnection
 
-Pre-requisites
+Pre-requisitos
 --------------
 
 - Android SDK 27
 - Android Build Tools v27.0.2
 - Android Support Repository
 
-Screenshots
--------------
 
-<img src="screenshots/1-launch.png" height="400" alt="Screenshot"/> <img src="screenshots/2-devices.png" height="400" alt="Screenshot"/> <img src="screenshots/3-chat.png" height="400" alt="Screenshot"/> 
 
-Getting Started
----------------
-
-This sample uses the Gradle build system. To build this project, use the
-"gradlew build" command or use "Import Project" in Android Studio.
-
-Support
--------
-
-- Google+ Community: https://plus.google.com/communities/105153134372062985968
-- Stack Overflow: http://stackoverflow.com/questions/tagged/android
-
-If you've found an error in this sample, please file an issue:
-https://github.com/googlesamples/android-BluetoothChat
-
-Patches are encouraged, and may be submitted by forking this project and
-submitting a pull request through GitHub. Please see CONTRIBUTING.md for more details.
-
-License
+Licencia
 -------
 
 Copyright 2017 The Android Open Source Project, Inc.
