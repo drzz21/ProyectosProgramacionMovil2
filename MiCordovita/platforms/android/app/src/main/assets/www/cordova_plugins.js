@@ -39,6 +39,14 @@ module.exports = [
     "clobbers": [
       "CameraPopoverHandle"
     ]
+  },
+  {
+    "id": "cordova-plugin-flashlight.Flashlight",
+    "file": "plugins/cordova-plugin-flashlight/www/Flashlight.js",
+    "pluginId": "cordova-plugin-flashlight",
+    "clobbers": [
+      "window.plugins.flashlight"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -47,7 +55,8 @@ module.exports.metadata =
   "cordova-plugin-whitelist": "1.3.3",
   "cordova-plugin-statusbar": "2.4.2",
   "cordova-plugin-vibration": "3.1.0",
-  "cordova-plugin-camera": "4.0.3"
+  "cordova-plugin-camera": "4.0.3",
+  "cordova-plugin-flashlight": "3.2.0"
 };
 // BOTTOM OF METADATA
 });
