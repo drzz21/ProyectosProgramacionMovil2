@@ -28,7 +28,7 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function () {
         this.receivedEvent('deviceready');
-         console.log(navigator.camera);
+        console.log(navigator.camera);
         var i = 0;
         var colors = ["black", "darkGray", "lightGray", "white", "gray", "red", "green", "blue", "cyan", "yellow", "magenta", "orange", "purple", "brown"];
 
@@ -43,26 +43,36 @@ var app = {
             }
 
         }, 1000);
-        
-        document.getElementById("vibrar").addEventListener("click", function(){
+
+        document.getElementById("vibrar").addEventListener("click", function () {
             navigator.vibrate(1000);
         });
-        
-        
-      
+
+        document.getElementById("luz").addEventListener("click", function () {
+            window.plugins.flashlight.toggle(
+                function () {}, // optional success callback
+                function () {}, // optional error callback
+                {
+                    intensity: 0.3
+                } // optional as well, used on iOS when switching on
+            );
+        });
+
+
+
 
 
 
 
 
     },
-    
-     
+
+
 
     // Update DOM on a Received Event
     receivedEvent: function (id) {
-        
-        
+
+
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
@@ -71,8 +81,8 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-        
-        
+
+
     }
 };
 
