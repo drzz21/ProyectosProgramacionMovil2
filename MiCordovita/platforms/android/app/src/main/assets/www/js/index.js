@@ -47,6 +47,14 @@ var app = {
         document.getElementById("vibrar").addEventListener("click", function () {
             navigator.vibrate(1000);
         });
+        
+        document.getElementById("bar").addEventListener("click", function () {
+            if(StatusBar.isVisible){
+                StatusBar.hide();
+            }else{
+                StatusBar.show();
+            }
+        });
 
         document.getElementById("luz").addEventListener("click", function () {
             window.plugins.flashlight.toggle(
