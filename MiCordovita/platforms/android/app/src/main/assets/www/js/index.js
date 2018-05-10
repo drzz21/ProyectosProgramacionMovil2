@@ -18,7 +18,7 @@
  */
 var app = {
     // Application Constructor
-    initialize: function() {
+    initialize: function () {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
     },
 
@@ -26,12 +26,31 @@ var app = {
     //
     // Bind any cordova events here. Common events are:
     // 'pause', 'resume', etc.
-    onDeviceReady: function() {
+    onDeviceReady: function () {
         this.receivedEvent('deviceready');
+        var i = 0;
+        var colors = ["black", "darkGray", "lightGray", "white", "gray", "red", "green", "blue", "cyan", "yellow", "magenta", "orange", "purple", "brown"];
+
+        
+
+
+        setInterval(function () {
+            StatusBar.backgroundColorByName(colors[i]);
+            i++;
+            if (i == colors.length) {
+                i = 0;
+            }
+
+        }, 1000);
+
+
+
+
+
     },
 
     // Update DOM on a Received Event
-    receivedEvent: function(id) {
+    receivedEvent: function (id) {
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
