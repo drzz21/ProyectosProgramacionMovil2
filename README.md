@@ -7,4 +7,10 @@
   - Servicios del sistema
   - Autoboot en proyecto de Mis notitas
   - Proveedor de contenidos y cliente del proveedor de contenidos
+  - Volley
+  - Futbolito
+  - BlackList
+  - Bluetooth Chat
+  - RegresoACasa
+  - MiCordova
  
